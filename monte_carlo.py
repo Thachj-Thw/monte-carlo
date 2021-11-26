@@ -64,7 +64,7 @@ class MCIntegration:
         # O(self.n * len(ar))
         store = zeros(self.n)
         index = zeros(self.n)
-        for y in range(1, self.n+1):
+        for y in prange(1, self.n+1):
             b = self.a + y * self.dx
             ar = zeros(self.N)
             for i in prange(self.N):
@@ -97,4 +97,4 @@ def main():
 if __name__ == "__main__":
     start = time.perf_counter()
     main()
-    print(f"Finished in {time.perf_counter() - start :5f} second(s)!")
+    print(f"Finished in {time.perf_counter() - start :f} second(s)!")
