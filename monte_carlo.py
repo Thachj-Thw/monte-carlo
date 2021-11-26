@@ -1,6 +1,6 @@
 from numpy import random, zeros, transpose, savetxt
 from math import sqrt, pi
-from numba import njit, types
+from numba import njit, types, prange
 from numba.experimental import jitclass
 import time
 
@@ -52,7 +52,7 @@ class MCIntegration:
     def getIntegral(self):
         # O(len(ar))
         ar = zeros(self.N)
-        for i in range(len(ar)):
+        for i in prange(self.N):
             ar[i] = random.uniform(self.a, self.b)
         integral = 0.0
         for i in ar:
@@ -67,7 +67,7 @@ class MCIntegration:
         for y in range(1, self.n+1):
             b = self.a + y * self.dx
             ar = zeros(self.N)
-            for i in range(len(ar)):
+            for i in range(self.N):
                 ar[i] = random.uniform(self.a, b)
             integral = 0.0 
             for i in ar:
@@ -97,4 +97,4 @@ def main():
 if __name__ == "__main__":
     start = time.perf_counter()
     main()
-    print(f"Finished in {time.perf_counter() - start: 5f} second(s)!")
+    print(f"Finished in {time.perf_counter() - start :5f} second(s)!")
