@@ -67,7 +67,7 @@ class MCIntegration:
         for y in range(1, self.n+1):
             b = self.a + y * self.dx
             ar = zeros(self.N)
-            for i in range(self.N):
+            for i in prange(self.N):
                 ar[i] = random.uniform(self.a, b)
             integral = 0.0 
             for i in ar:
