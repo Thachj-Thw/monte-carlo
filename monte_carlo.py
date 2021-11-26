@@ -50,7 +50,7 @@ class MCIntegration:
         return temp
 
     def getIntegral(self):
-        # O(len(ar))
+        # O(self.N)
         ar = zeros(self.N)
         for i in prange(self.N):
             ar[i] = random.uniform(self.a, self.b)
@@ -61,7 +61,7 @@ class MCIntegration:
         return ans
     
     def getDataset(self):
-        # O(self.n * len(ar))
+        # O(self.n * self.N)
         store = zeros(self.n)
         index = zeros(self.n)
         for y in prange(1, self.n+1):
